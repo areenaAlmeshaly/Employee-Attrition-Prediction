@@ -11,12 +11,13 @@ A Logistic Regression model was selected as the main model due to its interpreta
 
 ## 📂 Repository Structure
 
+```text
 Employee-Attrition-Prediction/
 │
 ├── WA_Fn-UseC_-HR-Employee-Attrition.csv
 ├── Employee_Attrition_Prediction.ipynb
 └── README.md
-
+```
 
 ## 📊 Dataset
 
@@ -26,24 +27,14 @@ It contains employee demographic, job-related, and workplace satisfaction inform
 
 ### Features
 
+Examples:
 - Age
-- Gender
 - Department
 - Job Role
-- Job Level
 - Monthly Income
-- Distance From Home
-- Business Travel
 - OverTime
 - Job Satisfaction
-- Environment Satisfaction
-- Work Life Balance
 - Years At Company
-- Years In Current Role
-- Years Since Last Promotion
-- Marital Status
-- Education
-- Education Field
 
 ### Target
 
