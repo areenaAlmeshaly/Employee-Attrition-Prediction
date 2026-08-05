@@ -151,7 +151,7 @@ This project can be further improved by:
 Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/Insurance-Cost-Prediction.git
+git clone https://github.com/your-username/Employee-Attrition-Prediction.git
 ```
 
 Install the required libraries:
