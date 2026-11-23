@@ -1,39 +1,50 @@
+from fastapi import FastAPI
+from pydantic import BaseModel
+from src.
+app=FastAPI(title="Employee Attrition Prediction API",
+             description="ML API for predicting Employee Attrition",
+             version="1.0.0")
 
-import mlflow
-import mlflow.sklearn
-
-from src.load_data import load_data
-from src.validate_data import validate
-from src.features import non_binary_series
-from src.feature_engineering import create_features
-from src.train import train_model
-from src.evaluate_model import evaluate_model
-
-
-def main():
-
-    df = load_data("data/IBM Data.csv")
-    validate(df)
-
-    df = create_features(df)
-    df = non_binary_series(df)
-
-    mlflow.set_experiment("Employee Attrition")
-
-    with mlflow.start_run():
-
-        model, X_test, y_test, probs = train_model(df,target="Attrition")
-        metrics, preds = evaluate_model(y_test,probs,threshold=0.35)
-
-        mlflow.log_params({
-            "model": "LogisticRegression",
-            "max_iter": 5000,
-            "class_weight": "balanced",
-            "threshold": 0.35})
-
-        mlflow.log_metrics(metrics)
-        mlflow.sklearn.log_model(model, "model")
+@app.get("/")
+def root():
+    return{"status":"ok"}
 
 
-if __name__ == "__main__":
-    main()
+class EmployeeData(BaseModel):
+    Age: int
+    BusinessTravel: str
+    DailyRate: int
+    Department: str
+    DistanceFromHome: int
+    Education: int
+    EducationField: str
+    EnvironmentSatisfaction: int
+    Gender: str
+    HourlyRate: int
+    JobInvolvement: int
+    JobLevel: int
+    JobRole: str
+    JobSatisfaction: int
+    MaritalStatus: str
+    MonthlyIncome: int
+    MonthlyRate: int
+    NumCompaniesWorked: int
+    OverTime: str
+    PercentSalaryHike: int
+    PerformanceRating: int
+    RelationshipSatisfaction: int
+    StockOptionLevel: int
+    TotalWorkingYears: int
+    TrainingTimesLastYear: int
+    WorkLifeBalance: int
+    YearsAtCompany: int
+    YearsInCurrentRole: int
+    YearsSinceLastPromotion: int
+    YearsWithCurrManager: int
+
+
+@app.post("/predict")
+def get_prediction(data):
+
+    result = predict(data.model_dump())
+    return {"prediction": result}

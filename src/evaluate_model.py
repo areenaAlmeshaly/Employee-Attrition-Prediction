@@ -17,4 +17,4 @@ def evaluate_model(y_test, probs, threshold=0.35):
     "recall": recall_score(y_test, preds, zero_division=0),
     "f1": f1_score(y_test, preds, zero_division=0)}
     
-    return metrics, preds
+    return metrics
