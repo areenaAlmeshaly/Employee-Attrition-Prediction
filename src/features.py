@@ -29,5 +29,4 @@ def non_binary_series(df):
             df=pd.concat([df, encoded], axis=1)
             df.drop(columns=[col], inplace=True)
 
-            print(df.columns[df.columns.duplicated()].tolist())
     return df
